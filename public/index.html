@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="css/index.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCEK2lNJ7ekp7VdRAe9Jc3JzxIf3sB40GE"></script>
+    <script src="js/index.js"></script>
+    <title>Smart Parking</title>
+</head>
+
+<body>
+    <nav class="topnav">
+        <a class="active" href="index.html">Smart Parking</a>
+        <a href="bookings.html">Previous Bookings</a>
+        <a onclick="localStorage.clear(); window.location='welcome.html'">Logout</a>
+    </nav>
+
+    <div id="cover">
+        <div id="map"></div>
+    </div>
+
+    <div style="display: none;" id="promptPayment" class="bookingPrompt">
+        <div class="booking">
+            <div id="booking-header">
+                Parking Slot Booking
+            </div>
+            <div id="details">
+                <div id="details-legend">
+                    <b class="detailsStyle">
+                        Customer Name
+                    </b>
+                    <b class="detailsStyle">
+                        Circle
+                    </b>
+                    <b class="detailsStyle">
+                        Slot Name
+                    </b>
+                    <b class="detailsStyle">
+                        Available count
+                    </b>
+                    <b class="detailsStyle">
+                        Price
+                    </b>
+                </div>
+                <div id="details-details">
+                    <div id="nameDetails" class="detailsStyle">
+                        adarsh
+                    </div>
+                    <div id="circleDetails" class="detailsStyle">
+                        Circle
+                    </div>
+                    <div id="slotDetails" class="detailsStyle">
+                        Slot Name
+                    </div>
+                    <div id="avacountDetails" class="detailsStyle">
+                        Available
+                    </div>
+                    <div id="price" class="detailsStyle">
+                        ₹60
+                    </div>
+                </div>
+            </div>
+            <hr>
+            <form id="bookForm">
+                <input type="hidden" id="slotNameValue" />
+                <b style="padding: 6px; text-align: left !important;">
+                    Reserve timing
+                </b>
+                <label style="display: flex; justify-content: space-evenly;  text-align: center; width: 100%;">
+                    <input type="date" id="date" required />
+                    <input type="time" id="time" required />
+                </label>
+                <button type="submit">
+                    Pay & Book &#8594;
+                </button>
+            </form>
+        </div>
+    </div>
+
+
+    <div class="bookingPrompt">
+        <div class="booking prompt">
+            Fetching location & setting circle...
+        </div>
+    </div>
+
+</body>
+
+</html>

@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="css/index.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCEK2lNJ7ekp7VdRAe9Jc3JzxIf3sB40GE"></script>
+    <title>Smart Parking</title>
+    <style>
+        section {
+            display: flex;
+            flex-direction: row;
+            /* justify-content: center;
+            align-items: center; */
+        }
+
+        section>div {
+            flex: 0.5;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        section>div>div {
+            text-align: center;
+            width: 100%;
+        }
+
+        #nameleg,
+        #balleg {
+            font-size: 18px;
+            font-weight: 500;
+            padding: 1rem;
+        }
+
+        .dataStyle {
+            padding: 1.2rem;
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="topnav">
+        <a href="index.html">Smart Parking</a>
+        <a class="active" href="bookings.html">Previous Bookings</a>
+        <a onclick="localStorage.clear(); window.location='welcome.html'">Logout</a>
+    </nav>
+
+
+    <section>
+        <div id="b">
+            <div id="balleg">
+                Slot Name
+            </div>
+        </div>
+        <div id="c">
+            <div id="balleg">
+                Price
+            </div>
+        </div>
+        <div id="d">
+            <div id="balleg">
+                Time
+            </div>
+        </div>
+        <div id="e">
+            <div id="balleg">
+                Status
+            </div>
+        </div>
+    </section>
+    <!-- 
+    <div class="bookingPrompt">
+        <div class="booking prompt">
+            Fetching data...
+        </div>
+    </div> -->
+    <script>
+        $(document).ready(function () {
+
+            fetch('http://localhost:5555/bookHistory', {
+                method: "GET", headers: {
+                    'Authorization': 'Bearer ' + localStorage.getItem('accessToken')
+                }
+            })
+                .then((response) => {
+                    if (response.status !== 200) {
+                        throw new Error("Auth Failed");
+                        return;
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    console.log(data);
+                    data.bookings.forEach(element => {
+                        $("#b").append(`<div class="dataStyle">${element.slotName}</div>`);
+                        $("#c").append(`<div class="dataStyle">₹${element.price}</div>`);
+                        $("#d").append(`<div class="dataStyle">${element.time}</div>`);
+
+                        const status = new Date(element.time) > new Date() ? "Upcoming" : "Completed"
+                        $("#e").append(`<div style="color: ${status === "Upcoming" ? "green" : "red"}" class="dataStyle">${status}</div>`);
+                    });
+                })
+                .catch(err => {
+                    alert("Something broke!");
+                    console.log(err);
+                });
+        });
+    </script>
+</body>
+
+</html>

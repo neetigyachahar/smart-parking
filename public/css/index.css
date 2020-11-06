@@ -1,0 +1,132 @@
+html, body {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+* {
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+    /* border: 1px blue solid; */
+}
+
+/* --------------------------- */
+
+nav {
+    overflow: hidden;
+    background-color: #333;
+}
+
+nav a {
+    float: left;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+}
+
+nav a:hover {
+    background-color: #ddd;
+    color: black;
+}
+
+nav a.active {
+    background-color: #4CAF50;
+    color: white;
+}
+
+/* --------------------------- */
+
+nav {
+    width: 100%;
+    text-align: center;
+    color: white;
+    font-size: 20px;
+    padding: 1.2rem;
+    background-color: #181818;
+}
+
+button {
+    display: block;
+    margin: 30px auto 0;
+    /* width: 180px;
+    height: 40px; */
+    padding: 16px;
+    border-radius: 25px;
+    border: none;
+    color: #eee;
+    font-size: 20px;
+    font-weight: 700;
+    box-shadow: 1px 4px 10px 1px #aaa;
+    background: linear-gradient(to right, #207cca 0%, #9f58a3 100%);
+    cursor: pointer;
+}
+
+#cover {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#map {
+    width: 60%;
+    height: 600px;
+}
+
+
+.bookingPrompt {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(0, 0, 0, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.booking {
+    width: 55%;
+    height: 70%;
+    background-color: white;
+    border-radius: 10px;
+}
+
+#booking-header {
+    width: 100%;
+    text-align: center;
+    font-size: 26px;
+    font-weight: 700;
+    padding: 1rem;
+}
+
+#details {
+    margin-top: 10px;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+}
+
+#details>div {
+    flex: 1;
+}
+
+b {
+    display: block;
+}
+
+.detailsStyle {
+    padding: 16px;
+    padding-left: 60px;
+}
+
+.prompt {
+    height: auto !important;
+    text-align: center;
+    font-size: 26px;
+    padding: 2rem;
+}
